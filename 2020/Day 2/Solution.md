@@ -1,4 +1,4 @@
-# Password Philosophy
+# [Password Philosophy](https://adventofcode.com/2020/day/2)
 ## Part 1 
 Your flight departs in a few days from the coastal airport; the easiest way down to the coast from here is via [toboggan](https://en.wikipedia.org/wiki/Toboggan).
 
@@ -6,7 +6,7 @@ The shopkeeper at the North Pole Toboggan Rental Shop is having a bad day. "Some
 
 Their password database seems to be a little corrupted: some of the passwords wouldn't have been allowed by the Official Toboggan Corporate Policy that was in effect when they were chosen.
 
-To try to debug the problem, they have created a list (your puzzle input) of passwords (according to the corrupted database) and the corporate policy when that password was set.
+To try to debug the problem, they have created a list (your puzzle input) of **passwords** (according to the corrupted database) and **the corporate policy when that password was set.**
 
 For example, suppose you have the following list:
 ```
@@ -18,22 +18,22 @@ Each line gives the password policy and then the password. The password policy i
 
 In the above example, `2` passwords are valid. The middle password, `cdefg`, is not; it contains no instances of `b`, but needs at least `1`. The first and third passwords are valid: they contain one `a` or nine `c`, both within the limits of their respective policies.
 
-How many passwords are valid according to their policies?
+**How many passwords are valid** according to their policies?
 
 ## Part 2
 While it appears you validated the passwords correctly, they don't seem to be what the Official Toboggan Corporate Authentication System is expecting.
 
 The shopkeeper suddenly realizes that he just accidentally explained the password policy rules from his old job at the sled rental place down the street! The Official Toboggan Corporate Policy actually works a little differently.
 
-Each policy actually describes two positions in the password, where 1 means the first character, 2 means the second character, and so on. (Be careful; Toboggan Corporate Policies have no concept of "index zero"!) Exactly one of these positions must contain the given letter. Other occurrences of the letter are irrelevant for the purposes of policy enforcement.
+Each policy actually describes **two positions in the password**, where `1` means the first character, `2` means the second character, and so on. (Be careful; Toboggan Corporate Policies have no concept of "index zero"!) **Exactly one of these positions** must contain the given letter. Other occurrences of the letter are irrelevant for the purposes of policy enforcement.
 
 Given the same example list from above:
 
-- `1-3 a: abcde` is valid: position `1` contains `a` and position `3` does not.
-- `1-3 b: cdefg` is invalid: neither position `1` nor position `3` contains `b`.
-- `2-9 c: ccccccccc` is invalid: both position `2` and position `9` contain `c`.
+- `1-3 a: abcde` is **valid**: position `1` contains `a` and position `3` does not.
+- `1-3 b: cdefg` is **invalid**: neither position `1` nor position `3` contains `b`.
+- `2-9 c: ccccccccc` is **invalid**: both position `2` and position `9` contain `c`.
 
-How many passwords are valid according to the new interpretation of the policies?
+**How many passwords are valid** according to the new interpretation of the policies?
 
 ## Solution
 ### Part 1
@@ -42,5 +42,8 @@ This problem is fairly simple to solve. I overengineered the problem, creating t
 The way the solution works is by creating a `frequency` hash map that maps a character `c` to the number of times it occurs in the password. The password is then deemed valid in the `satisfiesCondition1` function, which checks if `lowerAmount ≤ targetChar ≤ higherAmount`.
 
 Puzzle Answer: `542`
+
 ### Part 2
 The solution to this problem involves checking if `password[lowerAmount] == targetChar ^ password[higherAmount] == targetChar`. Note that the xor operator "`^`" is used in order to make sure that exactly 1 bound is matched.
+
+Puzzle Answer: `360`
