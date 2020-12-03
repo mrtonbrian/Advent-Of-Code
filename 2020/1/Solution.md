@@ -43,7 +43,7 @@ pair<int, int> twosum(int target, int start, int end) {
 ```
 This solution works by for each number `x`, storing its complement `target - x` in the set of `complements`. If `x` is found in the complements list, return `x` and `target - x` since they are both in the original list and sum to `target`.
 
-For the first part, `target=2020`.
+For the first part, `target = 2020`.
 
 Puzzle Answer: `898299`
 ### Part 2
