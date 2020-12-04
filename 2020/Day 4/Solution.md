@@ -15,5 +15,9 @@ def isValid1(self):
         return False
 ```
 
+Puzzle Answer: `192`
+
 ## Part 2
 Since every passport that is valid by Part 2 rules is valid by Part 1 rules, we only check passports valid by Part 1 rules. To do this, the `Password` class has a `isValid2` function to check if the passport is valid by Part 2 rules.
+
+Puzzle Answer: `101`
